@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Welcome Page</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            font-family: Arial;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .box {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        p {
+            font-size: 20px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <?php
+        date_default_timezone_set("Asia/Kolkata");
+    ?>
+
+    <h1>
+        <?php
+            echo "Welcome to PHP!";
+        ?>
+    </h1>
+
+    <p>
+        Current Date:
+        <?php
+            echo date("d-m-Y");
+        ?>
+    </p>
+
+    <p>
+        Current Time:
+        <?php
+            echo date("h:i:s A");
+        ?>
+    </p>
+
+</div>
+
+</body>
+</html>
