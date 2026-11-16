@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Types</title>
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            background-color: #eaf2ff;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+        }
+    </style>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 style="color:red;">
+        Welcome to CSS
+    </h1>
+
+    <h2>Student Information</h2>
+
+    <p class="info">
+        CSS is used to design attractive webpages.
+    </p>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+        </tr>
+
+        <tr>
+            <td>Rahul</td>
+            <td>HTML</td>
+        </tr>
+
+        <tr>
+            <td>Amit</td>
+            <td>CSS</td>
+        </tr>
+    </table>
+
+</body>
+</html>
