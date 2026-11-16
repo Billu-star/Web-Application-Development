@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Operations</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eaf2f8;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #aaa;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1a5276;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin: 12px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #154360;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d5f5e3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Array Operations</h2>
+
+    <input type="text" id="values"
+           placeholder="Apple, Mango, Banana, Orange">
+
+    <button onclick="displayArray()">Create Array</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+    function displayArray() {
+
+        var input = document.getElementById("values").value;
+
+        if (input.trim() === "") {
+            alert("Please enter array values");
+            return;
+        }
+
+        var fruits = input.split(",")
+            .map(function(item) {
+                return item.trim();
+            })
+            .filter(function(item) {
+                return item !== "";
+            });
+
+        var output = "<h3>Array Elements</h3>";
+
+        output += "<ol>";
+
+        for (var i = 0; i < fruits.length; i++) {
+            output += "<li>" + escapeHTML(fruits[i]) + "</li>";
+        }
+
+        output += "</ol>";
+
+        output += "<b>Total Elements:</b> " + fruits.length;
+
+        output += "<h3>Complete Array</h3>";
+
+        output += "<pre>" + escapeHTML(JSON.stringify(fruits, null, 2)) + "</pre>";
+
+        document.getElementById("result").innerHTML = output;
+    }
+
+    function escapeHTML(text) {
+        return text.replace(/[&<>"']/g, function(char) {
+            return {
+                '&': '&amp;', '<': '&lt;', '>': '&gt;',
+                '"': '&quot;', "'": '&#39;'
+            }[char];
+        });
+    }
+</script>
+
+</body>
+</html>
