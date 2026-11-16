@@ -2,72 +2,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP String Operations</title>
+    <title>String Manipulation</title>
 
     <style>
         body {
-            background: #e8f5e9;
             font-family: Arial;
-            text-align: center;
+            background: #eaf2f8;
+            padding: 40px;
         }
 
-        .box {
-            width: 450px;
-            margin: 60px auto;
-            padding: 25px;
+        .container {
+            max-width: 550px;
+            margin: auto;
             background: white;
+            padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 0 12px gray;
+            box-shadow: 0 4px 15px #aaa;
         }
 
         h2 {
-            color: green;
+            text-align: center;
+            color: #1a5276;
         }
 
-        p {
-            text-align: left;
-            padding: 8px;
-            background: #f1f8e9;
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin: 12px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #154360;
+        }
+
+        #result {
+            margin-top: 20px;
+            background: #d5f5e3;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-wrap: anywhere;
         }
     </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-    <h2>PHP String Manipulation</h2>
+    <h2>String Manipulation</h2>
 
-    <?php
+    <input type="text" id="str"
+           placeholder="Enter a String">
 
-    $str = "Hello PHP Programming";
+    <button onclick="manipulate()">Perform Operations</button>
 
-    echo "<p><b>Original String:</b> $str</p>";
-
-    echo "<p><b>String Length:</b> " .
-         strlen($str) . "</p>";
-
-    echo "<p><b>Word Count:</b> " .
-         str_word_count($str) . "</p>";
-
-    echo "<p><b>Uppercase:</b> " .
-         strtoupper($str) . "</p>";
-
-    echo "<p><b>Lowercase:</b> " .
-         strtolower($str) . "</p>";
-
-    echo "<p><b>Reverse String:</b> " .
-         strrev($str) . "</p>";
-
-    echo "<p><b>Replace PHP:</b> " .
-         str_replace("PHP", "Web", $str) . "</p>";
-
-    echo "<p><b>First 5 Characters:</b> " .
-         substr($str, 0, 5) . "</p>";
-
-    ?>
+    <div id="result"></div>
 
 </div>
+
+<script>
+    function manipulate() {
+
+        var str = document.getElementById("str").value;
+
+        if (str.trim() === "") {
+            alert("Please enter a string");
+            return;
+        }
+
+        var output = "";
+
+        output += "<h3>String Operations</h3>";
+
+        output += "Original String: " + escapeHTML(str) + "<br><br>";
+
+        output += "Length: " + str.length + "<br><br>";
+
+        output += "Uppercase: " + escapeHTML(str.toUpperCase()) + "<br><br>";
+
+        output += "Lowercase: " + escapeHTML(str.toLowerCase()) + "<br><br>";
+
+        output += "Reverse: " + escapeHTML(str.split("").reverse().join("")) + "<br><br>";
+
+        output += "Word Count: " + str.trim().split(/\s+/).length + "<br><br>";
+
+        output += "Replace PHP with Web: " +
+            escapeHTML(str.replaceAll("PHP", "Web")) + "<br><br>";
+
+        output += "First 5 Characters: " +
+            escapeHTML(str.substring(0, 5));
+
+        document.getElementById("result").innerHTML = output;
+    }
+
+    function escapeHTML(text) {
+        return text.replace(/[&<>"']/g, function(char) {
+            return {
+                '&': '&amp;', '<': '&lt;', '>': '&gt;',
+                '"': '&quot;', "'": '&#39;'
+            }[char];
+        });
+    }
+</script>
 
 </body>
 </html>
