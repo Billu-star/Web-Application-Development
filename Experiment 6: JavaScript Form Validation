@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            font-family: Arial;
+        }
+
+        .container {
+            width: 350px;
+            margin: 70px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: blue;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <input type="text" id="name" placeholder="Enter Name">
+
+        <input type="email" id="email" placeholder="Enter Email">
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+function validateForm() {
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+
+    let message = document.getElementById("message");
+
+    if (name === "" || email === "") {
+        message.style.color = "red";
+        message.innerHTML = "Please fill all fields!";
+        return false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        message.style.color = "red";
+        message.innerHTML = "Please enter a valid email!";
+        return false;
+    }
+
+    message.style.color = "green";
+    message.innerHTML = "Form submitted successfully!";
+
+    return false;
+}
+</script>
+
+</body>
+</html>
