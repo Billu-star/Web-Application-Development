@@ -2,93 +2,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP Array Program</title>
+    <title>Array Operations</title>
 
     <style>
         body {
-            background: #fff3e0;
             font-family: Arial;
-            text-align: center;
+            background: #eaf2f8;
+            padding: 40px;
         }
 
-        .box {
-            width: 400px;
-            margin: 60px auto;
-            padding: 25px;
+        .container {
+            max-width: 500px;
+            margin: auto;
             background: white;
+            padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 0 12px gray;
+            box-shadow: 0 4px 15px #aaa;
         }
 
         h2 {
-            color: #e65100;
+            text-align: center;
+            color: #1a5276;
         }
 
-        table {
+        input {
             width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
             padding: 12px;
-            border: 1px solid black;
+            box-sizing: border-box;
+            margin: 12px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
         }
 
-        th {
-            background: orange;
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2471a3;
             color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #154360;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d5f5e3;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-    <h2>PHP Array Operations</h2>
+    <h2>Array Operations</h2>
 
-    <?php
+    <input type="text" id="values"
+           placeholder="Apple, Mango, Banana, Orange">
 
-    $students = array(
-        "Rahul" => 85,
-        "Amit" => 90,
-        "Sagar" => 95,
-        "Priya" => 88,
-        "Neha" => 92
-    );
+    <button onclick="displayArray()">Create Array</button>
 
-    echo "<h3>Student Marks</h3>";
-
-    echo "<table>";
-
-    echo "<tr>
-            <th>Name</th>
-            <th>Marks</th>
-          </tr>";
-
-    foreach ($students as $name => $marks) {
-
-        echo "<tr>";
-        echo "<td>$name</td>";
-        echo "<td>$marks</td>";
-        echo "</tr>";
-
-    }
-
-    echo "</table>";
-
-    echo "<h3>Total Students: " .
-         count($students) . "</h3>";
-
-    echo "<h3>Total Marks: " .
-         array_sum($students) . "</h3>";
-
-    echo "<h3>Highest Marks: " .
-         max($students) . "</h3>";
-
-    ?>
+    <div id="result"></div>
 
 </div>
+
+<script>
+    function displayArray() {
+
+        var input = document.getElementById("values").value;
+
+        if (input.trim() === "") {
+            alert("Please enter array values");
+            return;
+        }
+
+        var fruits = input.split(",")
+            .map(function(item) {
+                return item.trim();
+            })
+            .filter(function(item) {
+                return item !== "";
+            });
+
+        var output = "<h3>Array Elements</h3>";
+
+        output += "<ol>";
+
+        for (var i = 0; i < fruits.length; i++) {
+            output += "<li>" + escapeHTML(fruits[i]) + "</li>";
+        }
+
+        output += "</ol>";
+
+        output += "<b>Total Elements:</b> " + fruits.length;
+
+        output += "<h3>Complete Array</h3>";
+
+        output += "<pre>" + escapeHTML(JSON.stringify(fruits, null, 2)) + "</pre>";
+
+        document.getElementById("result").innerHTML = output;
+    }
+
+    function escapeHTML(text) {
+        return text.replace(/[&<>"']/g, function(char) {
+            return {
+                '&': '&amp;', '<': '&lt;', '>': '&gt;',
+                '"': '&quot;', "'": '&#39;'
+            }[char];
+        });
+    }
+</script>
 
 </body>
 </html>
