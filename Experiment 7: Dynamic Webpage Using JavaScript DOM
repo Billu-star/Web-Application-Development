@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript DOM Example</title>
+
+    <style>
+        body {
+            background: #e0f7fa;
+            font-family: Arial;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .box {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1 id="heading">Hello Student!</h1>
+
+    <p id="text">Click the button to change the content.</p>
+
+    <button onclick="changeContent()">Click Me</button>
+
+</div>
+
+<script>
+function changeContent() {
+
+    document.getElementById("heading").innerHTML =
+        "Welcome to JavaScript!";
+
+    document.getElementById("text").innerHTML =
+        "Content changed successfully using DOM.";
+
+    document.getElementById("heading").style.color = "green";
+
+    document.body.style.backgroundColor = "#d4edda";
+}
+</script>
+
+</body>
+</html>
