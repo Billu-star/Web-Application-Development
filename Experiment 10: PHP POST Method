@@ -1,27 +1,29 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP POST Method</title>
-
+    <title>POST Method</title>
     <style>
         body {
-            background: #e3f2fd;
             font-family: Arial;
+            background: #eaf2f8;
+            margin: 0;
+            padding: 40px;
         }
 
-        .box {
-            width: 350px;
-            margin: 70px auto;
-            padding: 25px;
+        .container {
+            width: 400px;
+            margin: auto;
             background: white;
+            padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 0 12px gray;
+            box-shadow: 0 4px 15px #aaa;
         }
 
         h2 {
             text-align: center;
-            color: blue;
+            color: #1a5276;
         }
 
         input {
@@ -29,55 +31,79 @@
             padding: 10px;
             margin: 10px 0;
             box-sizing: border-box;
+            border: 1px solid #aaa;
+            border-radius: 5px;
         }
 
         button {
             width: 100%;
             padding: 12px;
-            background: blue;
+            background: #2471a3;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        .result {
-            color: green;
+        button:hover {
+            background: #154360;
+        }
+
+        #result {
             margin-top: 20px;
+            padding: 15px;
+            background: #d5f5e3;
+            border-radius: 5px;
+            display: none;
         }
     </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
+    <h2>Student Information Form</h2>
 
-    <h2>Student Information</h2>
+    <form id="myForm">
+        <input type="text" id="name"
+               placeholder="Enter Your Name" required>
 
-    <form method="POST" action="">
-        <label>Enter Name:</label>
-        <input type="text" name="name" required>
+        <input type="email" id="email"
+               placeholder="Enter Your Email" required>
 
-        <label>Enter Email:</label>
-        <input type="email" name="email" required>
-
-        <button type="submit" name="submit">Submit</button>
+        <button type="submit">Submit</button>
     </form>
 
-    <?php
-    if (isset($_POST['submit'])) {
-
-        $name = htmlspecialchars($_POST['name']);
-        $email = htmlspecialchars($_POST['email']);
-
-        echo "<div class='result'>";
-        echo "<h3>Submitted Details</h3>";
-        echo "Name: " . $name . "<br><br>";
-        echo "Email: " . $email;
-        echo "</div>";
-    }
-    ?>
-
+    <div id="result"></div>
 </div>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+
+        document.getElementById("result").style.display = "block";
+
+        document.getElementById("result").innerHTML =
+            "<h3>Submitted Details</h3>" +
+            "<p><b>Name:</b> " + escapeHTML(name) + "</p>" +
+            "<p><b>Email:</b> " + escapeHTML(email) + "</p>";
+    });
+
+    function escapeHTML(text) {
+        return text.replace(/[&<>"']/g, function(char) {
+            return {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[char];
+        });
+    }
+</script>
 
 </body>
 </html>
