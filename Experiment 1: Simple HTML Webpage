@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Details</title>
+</head>
+<body style="background-color:#eaf4ff;">
+
+    <h1 align="center" style="color:blue;">
+        My Personal Details
+    </h1>
+
+    <hr>
+
+    <h2>Personal Information</h2>
+
+    <p><b>Name:</b> Your Name</p>
+    <p><b>College:</b> Your College Name</p>
+    <p><b>Course:</b> Computer Engineering</p>
+    <p><b>Gender:</b> Male</p>
+    <p><b>Email:</b> <u>yourname@gmail.com</u></p>
+
+    <h3>About Me</h3>
+
+    <p>
+        Hello! My name is <b>Your Name</b>.
+        I am a <i>Computer Engineering student</i>.
+        I like learning <u>HTML, CSS and JavaScript</u>.
+    </p>
+
+    <p>
+        My favourite subject is <mark>Web Technology</mark>.
+    </p>
+
+    <hr>
+
+    <h3>Thank You!</h3>
+
+</body>
+</html>
