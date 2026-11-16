@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP String Operations</title>
+
+    <style>
+        body {
+            background: #e8f5e9;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .box {
+            width: 450px;
+            margin: 60px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 12px gray;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        p {
+            text-align: left;
+            padding: 8px;
+            background: #f1f8e9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>PHP String Manipulation</h2>
+
+    <?php
+
+    $str = "Hello PHP Programming";
+
+    echo "<p><b>Original String:</b> $str</p>";
+
+    echo "<p><b>String Length:</b> " .
+         strlen($str) . "</p>";
+
+    echo "<p><b>Word Count:</b> " .
+         str_word_count($str) . "</p>";
+
+    echo "<p><b>Uppercase:</b> " .
+         strtoupper($str) . "</p>";
+
+    echo "<p><b>Lowercase:</b> " .
+         strtolower($str) . "</p>";
+
+    echo "<p><b>Reverse String:</b> " .
+         strrev($str) . "</p>";
+
+    echo "<p><b>Replace PHP:</b> " .
+         str_replace("PHP", "Web", $str) . "</p>";
+
+    echo "<p><b>First 5 Characters:</b> " .
+         substr($str, 0, 5) . "</p>";
+
+    ?>
+
+</div>
+
+</body>
+</html>
