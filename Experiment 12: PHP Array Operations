@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Array Program</title>
+
+    <style>
+        body {
+            background: #fff3e0;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .box {
+            width: 400px;
+            margin: 60px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 12px gray;
+        }
+
+        h2 {
+            color: #e65100;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid black;
+        }
+
+        th {
+            background: orange;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>PHP Array Operations</h2>
+
+    <?php
+
+    $students = array(
+        "Rahul" => 85,
+        "Amit" => 90,
+        "Sagar" => 95,
+        "Priya" => 88,
+        "Neha" => 92
+    );
+
+    echo "<h3>Student Marks</h3>";
+
+    echo "<table>";
+
+    echo "<tr>
+            <th>Name</th>
+            <th>Marks</th>
+          </tr>";
+
+    foreach ($students as $name => $marks) {
+
+        echo "<tr>";
+        echo "<td>$name</td>";
+        echo "<td>$marks</td>";
+        echo "</tr>";
+
+    }
+
+    echo "</table>";
+
+    echo "<h3>Total Students: " .
+         count($students) . "</h3>";
+
+    echo "<h3>Total Marks: " .
+         array_sum($students) . "</h3>";
+
+    echo "<h3>Highest Marks: " .
+         max($students) . "</h3>";
+
+    ?>
+
+</div>
+
+</body>
+</html>
